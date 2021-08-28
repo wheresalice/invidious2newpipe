@@ -1,3 +1,9 @@
+subscription_manager*
+invidious2newpipe
+
+# IDE directories
+.idea
+
 # Binaries for programs and plugins
 *.exe
 *.exe~
