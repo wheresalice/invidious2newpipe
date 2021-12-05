@@ -8,3 +8,12 @@ builds:
     goarch:
       - amd64
       - arm64
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^.github:'
+      - '^.vscode:'
+      - '^test:'
+      - '^docs:'
+

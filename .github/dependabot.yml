@@ -1,0 +1,31 @@
+version: 2
+updates:
+  # Maintain dependencies for the core library
+  - package-ecosystem: "gomod"
+    target-branch: "main"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "friday"
+    reviewers:
+      - "wheresalice"
+    assignees:
+      - "wheresalice"
+    labels:
+      - "chore"
+    open-pull-requests-limit: 10
+
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
+    target-branch: "main"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "friday"
+    reviewers:
+      - "wheresalice"
+    assignees:
+      - "wheresalice"
+    labels:
+      - "chore"
+    open-pull-requests-limit: 10
