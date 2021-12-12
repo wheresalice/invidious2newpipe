@@ -11,19 +11,11 @@ Download the appropriate binary for your system and **Export subscriptions as OP
 Then run:
 
 ```shell
-./invidious2newpipe ~/Downloads/subscription_manager
+./invidious2newpipe cli ~/Downloads/subscription_manager
 ```
 
-Alternatively:
+Alternatively you can run this as a web service to make it easier to migrate between devices
 
 ```shell
-# From source code:
-go run invidious2newpipe.go > export.json
-
-# Specifying a custom file
-go run invidious2newpipe.go ~/Downloads/subscription_manager > export.json
-
-# Building and running a binary file
-go build invidious2newpipe.go
-./invidious2newpipe
+./invidious2newpipe web
 ```

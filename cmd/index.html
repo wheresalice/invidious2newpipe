@@ -1,0 +1,50 @@
+<html>
+<head>
+    <style type="text/css">
+        body {
+            margin-left: 5%;
+            line-height:1.6;
+            font-size:20px;
+        }
+        h1 {
+            background-color: #cccccc;
+            padding-left: 10px;
+            border-bottom: solid 5px #444444;
+            border-left: solid 5px #222222;
+        }
+        div.title {
+            border-top: 2px solid #444444;
+            border-left: 4px solid #444444;
+            margin: 3px;
+            padding-left: 5px;
+        }
+        input.button {
+            padding: 5px;
+            line-height: 1.6;
+            font-size: 20px;
+
+        }
+    </style>
+</head>
+<body>
+<h1>Invidious to NewPipe</h1>
+
+<ol>
+    <li>Visit the settings page on your Invidious instance</li>
+    <li>Export subscriptions as OPML (for NewPipe & FreeTube)</li>
+    <li>Paste the contents to this form</li>
+    <li>Download and import the resulting content on your mobile device</li>
+</ol>
+
+<form method="POST" enctype="multipart/form-data">
+    <div class="title">
+        OPML:
+        <br />
+        <input type="file" name="subs">
+        <br />
+    </div>
+    <input type="submit" class="button" value="Convert!">
+</form>
+
+</body>
+</html>
