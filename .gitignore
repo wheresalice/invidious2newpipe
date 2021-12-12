@@ -1,5 +1,8 @@
 subscription_manager*
 invidious2newpipe
+subs
+
+coverage.txt
 
 # IDE directories
 .idea
