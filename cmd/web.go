@@ -11,9 +11,14 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"path"
 	"path/filepath"
 
 	"github.com/spf13/cobra"
+)
+
+var (
+	workPath = "subs"
 )
 
 // webCmd represents the web command
@@ -25,7 +30,11 @@ var webCmd = &cobra.Command{
 		log.Println("invidious2newpipe -- Starting ")
 		log.Printf("http://localhost:%v\n", port)
 
-		os.Mkdir("subs", 0700)
+		subsDir := os.Getenv("SUBS_DIR")
+		workPath = path.Join(subsDir, workPath)
+
+		os.Mkdir(workPath, 0700)
+		log.Printf("Using %v to store subs", workPath)
 
 		if value, ok := os.LookupEnv("PORT"); ok {
 			port = value
@@ -44,15 +53,15 @@ var (
 var index string
 
 func handleGetSubs(w http.ResponseWriter, r *http.Request) {
-	path := filepath.Clean(r.URL.Path)
-	log.Printf("GET %v", path)
+	reqPath := filepath.Clean(r.URL.Path)
+	log.Printf("GET %v", reqPath)
 
-	if (path == "/") || (path == "/index.html") {
+	if (reqPath == "/") || (reqPath == "/index.html") {
 		fmt.Fprintf(w, index)
 	} else {
 		// otherwise, if the requested paste exists, we serve it...
 
-		subs, err := os.ReadFile("subs/" + path)
+		subs, err := os.ReadFile(path.Join(workPath, reqPath))
 		if err != nil {
 			http.NotFound(w, r)
 		}
@@ -111,7 +120,7 @@ func handlePutSubs(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			fmt.Fprintf(w, "failed to marshal content: %v", err)
 		}
-		os.WriteFile("subs/"+hash, output, 0700)
+		os.WriteFile(path.Join(workPath, hash), output, 0600)
 		http.Redirect(w, r, hash, 301)
 	}
 
@@ -128,7 +137,6 @@ func reqHandler(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 	}
 }
-
 
 func init() {
 	rootCmd.AddCommand(webCmd)

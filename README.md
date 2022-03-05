@@ -17,5 +17,5 @@ Then run:
 Alternatively you can run this as a web service to make it easier to migrate between devices
 
 ```shell
-./invidious2newpipe web
+SUBS_DIR=/tmp ./invidious2newpipe web
 ```
