@@ -1,12 +1,12 @@
 package cmd
 
 import (
-	"crypto/sha256"
 	_ "embed"
 	"encoding/json"
 	"encoding/xml"
 	"fmt"
 	"github.com/wheresalice/invidious2newpipe/lib"
+	"hash/adler32"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -72,7 +72,7 @@ func handleGetSubs(w http.ResponseWriter, r *http.Request) {
 }
 
 func getHash(content string) string {
-	h := sha256.New()
+	h := adler32.New()
 	h.Write([]byte(content))
 	return fmt.Sprintf("%x", h.Sum(nil))
 }
