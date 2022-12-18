@@ -7,10 +7,6 @@ updates:
     schedule:
       interval: "weekly"
       day: "friday"
-    reviewers:
-      - "wheresalice"
-    assignees:
-      - "wheresalice"
     labels:
       - "chore"
     open-pull-requests-limit: 10
@@ -22,10 +18,17 @@ updates:
     schedule:
       interval: "weekly"
       day: "friday"
-    reviewers:
-      - "wheresalice"
-    assignees:
-      - "wheresalice"
+    labels:
+      - "chore"
+    open-pull-requests-limit: 10
+
+  # Maintain dependencies for Docker
+  - package-ecosystem: "docker"
+    target-branch: "main"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "friday"
     labels:
       - "chore"
     open-pull-requests-limit: 10
