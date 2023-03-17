@@ -8,8 +8,7 @@ pull_request_rules:
     conditions:
       - -draft
       - author~=^dependabot(|-preview)\[bot\]$
-      - check-success='test (1.16.x, ubuntu-latest)'
-      - check-success='test (1.17.x, ubuntu-latest)'
+      - check-success='test (1.20.x, ubuntu-latest)'
       - title~=bump [^\s]+ from ([\d]+)\..+ to \1\.
     actions:
       review:
@@ -20,8 +19,7 @@ pull_request_rules:
   - name: Alert on major version detection
     conditions:
       - author~=^dependabot(|-preview)\[bot\]$
-      - check-success='test (1.16.x, ubuntu-latest)'
-      - check-success='test (1.17.x, ubuntu-latest)'
+      - check-success='test (1.20.x, ubuntu-latest)'
       - -title~=bump [^\s]+ from ([\d]+)\..+ to \1\.
     actions:
       comment:
@@ -34,8 +32,7 @@ pull_request_rules:
   - name: Automatic Merge ⬇️ on Approval ✔
     conditions:
       - "#approved-reviews-by>=1"
-      - check-success='test (1.16.x, ubuntu-latest)'
-      - check-success='test (1.17.x, ubuntu-latest)'
+      - check-success='test (1.20.x, ubuntu-latest)'
       - label!=work-in-progress
       - -draft
     actions:
@@ -146,22 +143,6 @@ pull_request_rules:
     actions:
       label:
         add: ["idea"]
-
-  # ===============================================================================
-  # CONTRIBUTORS
-  # ===============================================================================
-
-  - name: Welcome New Contributors
-    conditions:
-      - and:
-          - author!=dependabot[bot]
-          - author!=mergify[bot]
-          - author!=allcontributors[bot]
-          - author!=wheresalice
-    actions:
-      comment:
-        message: |
-          Welcome to our open-source project! 💘
 
   # ===============================================================================
   # STALE BRANCHES
