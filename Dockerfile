@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM golang:1.20-alpine
+FROM golang:1.21-alpine
 WORKDIR /go/src/github.com/wheresalice/invidious2newpipe/
 COPY . .
 #RUN go mod download
